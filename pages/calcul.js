@@ -70,9 +70,8 @@ export default function Home() {
   console.log(matrix1);
   console.log(matrix2);
 
-  var matrix7 = nj.add(matrix2,matrix1);
-  console.log(matrix7);
-  var matrix3 = nj.dot(matrix1, matrix2);
+  var addin = nj.add(matrix2,matrix1);
+  var multyin = nj.dot(matrix1, matrix2);
   var subin = nj.subtract(matrix1, matrix2);
 
 
@@ -142,13 +141,13 @@ export default function Home() {
     <button onClick={() => setShowMult(!showMult)}>
         Multiply
       </button>
-      {showMult && <Matrix matrix={matrix3} />}
+      {showMult && <Matrix matrix={multyin} />}
 
 
       <button onClick={() => setShowMult(!showAdd)}>
         Add
       </button>
-      {showAdd && <Matrix matrix={matrix7} />}
+      {showAdd && <Matrix matrix={addin} />}
 
 
       <button onClick={() => setShowSub(!showSub)}>

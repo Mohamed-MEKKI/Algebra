@@ -4,6 +4,7 @@ import { Inter } from '@next/font/google'
 import styles from '@/styles/Home.module.css'
 import nj from "numjs"
 import React, { useState } from 'react';
+import Link from 'next/link'
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -46,7 +47,7 @@ function Header({title }) {
         <div>
           <p>You clicked {count} times</p>
           <button onClick={() => setCount(count + 1)}>
-          <a href="/">the link text</a>
+          <Link href="/"/>
 
          
          </button>
@@ -54,7 +55,7 @@ function Header({title }) {
      );
    }
  
-export default function ft() {
+export default function Ft() {
   const [showMult, setShowMult] = useState(false);
 
   return (
