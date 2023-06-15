@@ -1,95 +1,53 @@
 import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from '@next/font/google'
 import styles from '@/styles/Home.module.css'
 import nj from "numjs"
 import React, { useState } from 'react';
-import e from 'express'
-
-
-const inter = Inter({ subsets: ['latin'] })
-
-    //var a= nj.cos(3.14);
-function Header({title }) {
-    return <h1>{title ? title : 'Default title'}</h1>;
-  }
 
 
 
-  
-  
-  function Matrix({ matrix }) {
-    return (
-      <table>
-        <tbody>
-          {matrix.tolist().map((row, i) => (
-            <tr key={i}>
-              {row.map((col, j) => (
-                <td key={j}>{col}</td>
-              ))}
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    );
-  }
- 
+function Header({ title }) {
+  return <h1>{title ? title : 'Default title'}</h1>;
+}
 
-    function Example() {
-      const [count, setCount] = useState(0);
-  
-    return (
-        <div>
-          <p>You clicked {count} times</p>
-          <button onClick={() => setCount(count + 1)}>
-          Click me
-         </button>
-       </div>
-     );
-   }
- 
-export default function Home() {
+function Matrix({ matrix }) {
+  return (
+    <table>
+      <tbody>
+        {matrix.tolist().map((row, i) => (
+          <tr key={i}>
+            {row.map((col, j) => (
+              <td key={j}>{col}</td>
+            ))}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  );
+}
+
+export default function home() {
   const [showMult, setShowMult] = useState(false);
   const [showAdd, setShowAdd] = useState(false);
   const [showSub, setShowSub] = useState(false);
-  const [value, setValue] = useState(0);
 
-  /*
-  let c = [];
-  for (let i = 0 ; i < value ; i++)
-  {
-    c[i] = [0,0];
-
-  }
-  console.log(c);
-   <div>
-      <input type="number" value={value} onChange={e => setValue(e.target.value)} />
-      <p>The value of the input is: {value}</p>
-    </div>
-*/
   const [matrix1, setMatrix] = useState([[0, 0], [0, 0]]);
   const [matrix2, setMatrix2] = useState([[0, 0], [0, 0]]);
-
 
   const handleChange = (e, i, j) => {
     const newMatrix = [...matrix1];
     newMatrix[i][j] = Number(e.target.value);
     setMatrix(newMatrix);
   };
+
   const handleChange2 = (e, i, j) => {
     const newMatrix = [...matrix2];
     newMatrix[i][j] = Number(e.target.value);
     setMatrix2(newMatrix);
   };
-  console.log(matrix1);
-  console.log(matrix2);
 
-  var addin = nj.add(matrix2,matrix1);
+  var addin = nj.add(matrix2, matrix1);
   var multyin = nj.dot(matrix1, matrix2);
   var subin = nj.subtract(matrix1, matrix2);
-
-
-
 
   return (
     <>
@@ -100,86 +58,71 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        <Header title="Calcul matriciel"/>
+        <Header title="Calcul matriciel" />
+       <div>
+        <table>
+          <tbody>
+          <tr>
+            <td>
+              matrix A
+            </td>
+            <td>
+            {matrix1.map((row, i) => (
+  <div key={i}>
+    {row.map((col, j) => (
+      <input
+        key={`${i}-${j}`} // Use a unique key
+        type="number"
+        value={col.toString()} // Ensure value is a string
+        onChange={(e) => handleChange(e, i, j)}
+      />
+    ))}
+  </div>
+))}
 
-    
-    
+            </td>
+          </tr>
+          <tr>
+            <td>
+              matrix B
+            </td>
+            <td>
+            {matrix2.map((row, i) => (
+  <div key={i}>
+    {row.map((col, j) => (
+      <input
+        key={`${i}-${j}`} // Use a unique key
+        type="number"
+        value={col.toString()} // Ensure value is a string
+        onChange={(e) => handleChange2(e, i, j)}
+      />
+    ))}
+  </div>
+))}
 
-   
-
-    <table>
-      <tr>
-        <td>
-          matrix A
-        </td>
-        <td>
-        <form>
-      {matrix1.map((row, i) => (
-        <div key={i}>
-          {row.map((col, j) => (
-            <input
-              key={j}
-              type="number"
-              value={col}
-              onChange={(e) => handleChange(e, i, j)}
-            />
-          ))}
+            </td>
+          </tr>
+          </tbody>
+        </table>
         </div>
-      ))}
-    </form>
-
-        </td>
-      </tr>
-      <tr>
-      <td>
-          matrix B
-        </td>
-        <td>
-        <form>
-      {matrix2.map((row, i) => (
-        <div key={i}>
-          {row.map((col, j) => (
-            <input
-              key={j}
-              type="number"
-              value={col}
-              onChange={(e) => handleChange2(e, i, j)}
-            />
-          ))}
+       <div>
+        <button onClick={() => setShowMult(!showMult)}>
+          Multiply
+        </button>
+        {showMult && <Matrix matrix={multyin} />}
         </div>
-      ))}
-    </form>
-   
-
-        </td>
-      </tr>
-    </table>
-     
-
-  
-    <button onClick={() => setShowMult(!showMult)}>
-        Multiply
-      </button>
-      {showMult && <Matrix matrix={multyin} />}
-
-
-      <button onClick={() => setShowAdd(!showAdd)}>
-        Add
-      </button>
-      {showAdd && <Matrix matrix={addin} />}
-
-
-      <button onClick={() => setShowSub(!showSub)}>
-        sub
-      </button>
-      {showSub && <Matrix matrix={subin} />}
-
-      
-          
-   
-    
-    
-        
+        <div>
+        <button onClick={() => setShowAdd(!showAdd)}>
+          Add
+        </button>
+        {showAdd && <Matrix matrix={addin} />}
+        </div>
+        <div>
+        <button onClick={() => setShowSub(!showSub)}>
+          Sub
+        </button>
+        {showSub && <Matrix matrix={subin} />}
+        </div>
       </main>
     </>
   )
