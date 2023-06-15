@@ -4,6 +4,7 @@ import { Inter } from '@next/font/google'
 import styles from '@/styles/Home.module.css'
 import nj from "numjs"
 import React, { useState } from 'react';
+import e from 'express'
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -51,8 +52,21 @@ export default function Home() {
   const [showMult, setShowMult] = useState(false);
   const [showAdd, setShowAdd] = useState(false);
   const [showSub, setShowSub] = useState(false);
+  const [value, setValue] = useState(0);
 
-  
+  /*
+  let c = [];
+  for (let i = 0 ; i < value ; i++)
+  {
+    c[i] = [0,0];
+
+  }
+  console.log(c);
+   <div>
+      <input type="number" value={value} onChange={e => setValue(e.target.value)} />
+      <p>The value of the input is: {value}</p>
+    </div>
+*/
   const [matrix1, setMatrix] = useState([[0, 0], [0, 0]]);
   const [matrix2, setMatrix2] = useState([[0, 0], [0, 0]]);
 
@@ -76,6 +90,7 @@ export default function Home() {
 
 
 
+
   return (
     <>
       <Head>
@@ -88,6 +103,9 @@ export default function Home() {
         <Header title="Calcul matriciel"/>
 
     
+    
+
+   
 
     <table>
       <tr>
@@ -131,6 +149,7 @@ export default function Home() {
         </div>
       ))}
     </form>
+   
 
         </td>
       </tr>
@@ -144,7 +163,7 @@ export default function Home() {
       {showMult && <Matrix matrix={multyin} />}
 
 
-      <button onClick={() => setShowMult(!showAdd)}>
+      <button onClick={() => setShowAdd(!showAdd)}>
         Add
       </button>
       {showAdd && <Matrix matrix={addin} />}
