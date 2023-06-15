@@ -26,10 +26,10 @@ export default function Home() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              By{' '}
+              By{'Maalem '}
               <Image
-                src="/vercel.svg"
-                alt="Vercel Logo"
+                src="/maths.jpg"
+                alt="Algebra Logo"
                 className={styles.vercelLogo}
                 width={100}
                 height={24}
@@ -42,8 +42,8 @@ export default function Home() {
         <div className={styles.center}>
           <Image
             className={styles.logo}
-            src="/next.svg"
-            alt="Next.js Logo"
+            src="/maths.jpg"
+            alt="Algebra Logo"
             width={180}
             height={37}
             priority
@@ -67,7 +67,7 @@ export default function Home() {
             rel="noopener noreferrer"
           >
             <h2 className={inter.className}>
-            Matrix Calculations <span>-&gt;</span>
+            Matrix Calculations 
             </h2>
             <p className={inter.className}>
               Do your matrix calculations with simplicity !
@@ -81,7 +81,7 @@ export default function Home() {
             rel="noopener noreferrer"
           >
             <h2 className={inter.className}>
-              FFT <span>-&gt;</span>
+              FFT 
             </h2>
             <p className={inter.className}>
               Discorver Fourrier Transformations and enjoy.
@@ -95,7 +95,7 @@ export default function Home() {
             rel="noopener noreferrer"
           >
             <h2 className={inter.className}>
-            Scientific operations <span>-&gt;</span>
+            Scientific operations 
             </h2>
             <p className={inter.className}>
               Do your calculations with your own!
@@ -109,7 +109,7 @@ export default function Home() {
             rel="noopener noreferrer"
           >
             <h2 className={inter.className}>
-               Learn <span>-&gt;</span>
+               Learn 
             </h2>
             <p className={inter.className}>
               Learn about algebra with a fun, interactive way !

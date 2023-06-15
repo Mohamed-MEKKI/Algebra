@@ -25,7 +25,7 @@ function Matrix({ matrix }) {
   );
 }
 
-export default function home() {
+export default function Home() {
   const [showMult, setShowMult] = useState(false);
   const [showAdd, setShowAdd] = useState(false);
   const [showSub, setShowSub] = useState(false);
