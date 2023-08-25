@@ -65,14 +65,7 @@ export default function Ft() {
       </Head>
       <main className={styles.main}>
         <Header title="Fourrier Fast Transformation"/>
-        
-
-     
-    <Matrix matrix={RI} />
-
-    
-    
-        
+        <Matrix matrix={RI} />
       </main>
     </>
   )
