@@ -5,7 +5,42 @@ const ScientificCalculator = () => {
   const [currentInput, setCurrentInput] = useState('');
 
   const handleButtonClick = buttonText => {
-    // Implement your button click logic here
+    switch (buttonText) {
+      case 'C':
+        setCurrentInput('');
+        break;
+      case '←':
+        setCurrentInput(currentInput.slice(0, -1));
+        break;
+      case '=':
+        try {
+          setCurrentInput(eval(currentInput).toString());
+        } catch (error) {
+          setCurrentInput('Error');
+        }
+        break;
+      case '√':
+        setCurrentInput(Math.sqrt(currentInput).toString());
+        break;
+      case '^':
+        setCurrentInput(currentInput + '**');
+        break;
+      case 'sin':
+        setCurrentInput(Math.sin(currentInput).toString());
+        break;
+      case 'cos':
+        setCurrentInput(Math.cos(currentInput).toString());
+        break;
+      case 'tan':
+        setCurrentInput(Math.tan(currentInput).toString());
+        break;
+      case 'π':
+        setCurrentInput(Math.PI);
+        break;
+      default:
+        setCurrentInput(currentInput + buttonText);
+        break;
+    }
   };
   const calculatorStyles = {
     width: '300px',
@@ -33,11 +68,11 @@ const ScientificCalculator = () => {
 
   const buttons = [
     'C', '←', '^', '√',
+    'sin', 'cos', 'tan','π',
     '7', '8', '9', '/',
     '4', '5', '6', '*',
     '1', '2', '3', '-',
     '0', '.', '=', '+',
-    'sin', 'cos', 'tan'
   ];
 
   return (

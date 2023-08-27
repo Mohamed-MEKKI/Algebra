@@ -1,8 +1,11 @@
 import '@/styles/globals.css'
 import { ThemeContextProvider } from '@/components/ThemeContext'
+import '../styles/globals.css'
 
 export default function App({ Component, pageProps }) {
-  return (<ThemeContextProvider>
-      <Component {...pageProps} />
-</ThemeContextProvider>)
+  return (
+        <ThemeContextProvider>
+        <Component {...pageProps} />
+        </ThemeContextProvider>
+)
 }
